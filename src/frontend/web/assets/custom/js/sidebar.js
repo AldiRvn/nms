@@ -1,35 +1,26 @@
 // Fill #list-database with value
 new Vue({
     el: '#sidebar',
-    data () {
-      return {
-        databases: []
-      }
+    data() {
+        return {
+            databases: []
+        }
     },
-    async mounted () {
+    async mounted() {
         try {
-            const users = await axios.get(`https://jsonplaceholder.typicode.com/users`)
-            // console.log(users)
+            const databases = await axios.get(`/svc/database/collection/find`)
+            // console.log(databases)
 
-            users.data.forEach(async user => {
-                // console.log(user);
-
-                const todos = []
-                const user_todos = await axios.get(`https://jsonplaceholder.typicode.com/users/${user.id}/todos`)
-                // console.log(user_todos)
-
-                user_todos.data.forEach(todo => {
-                    todos.push(todo.title)
-                })
+            databases.data.data.forEach(async database => {
+                // console.log(database);
 
                 this.databases.push({
-                    name: user.name,
-                    collections: todos
+                    name: database.name,
+                    collections: database.collections
                 })
             });
         } catch (err) {
             console.error(err)
         }
     }
-  })
-  
+})

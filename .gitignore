@@ -16,3 +16,4 @@
 
 # IDE/Text Editor/Third Party stuff
 .vscode/
+tmp/*
