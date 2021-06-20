@@ -1,26 +1,35 @@
 // Fill #list-database with value
-const SIDE_BAR = {
-    data() {
-        return {
-            databases: [
-                {
-                    name: "mock",
-                    collections: [
-                        "users",
-                        "books"
-                    ]
-                },
-                {
-                    name: "kiasan",
-                    collections: [
-                        "semua",
-                        "abadi",
-                        "kemari"
-                    ]
-                }
-            ]
+new Vue({
+    el: '#sidebar',
+    data () {
+      return {
+        databases: []
+      }
+    },
+    async mounted () {
+        try {
+            const users = await axios.get(`https://jsonplaceholder.typicode.com/users`)
+            // console.log(users)
+
+            users.data.forEach(async user => {
+                // console.log(user);
+
+                const todos = []
+                const user_todos = await axios.get(`https://jsonplaceholder.typicode.com/users/${user.id}/todos`)
+                // console.log(user_todos)
+
+                user_todos.data.forEach(todo => {
+                    todos.push(todo.title)
+                })
+
+                this.databases.push({
+                    name: user.name,
+                    collections: todos
+                })
+            });
+        } catch (err) {
+            console.error(err)
         }
     }
-}
-
-Vue.createApp(SIDE_BAR).mount("#sidebar")
+  })
+  
