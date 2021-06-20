@@ -15,5 +15,6 @@
 # vendor/
 
 # IDE/Text Editor/Third Party stuff
-.vscode/
+.vscode/*
 tmp/*
+.VSCodeCounter/*
