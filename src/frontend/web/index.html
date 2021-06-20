@@ -19,9 +19,9 @@
 <body class="bg-secondary d-flex">
 
     <aside id="sidebar" class="d-flex">
-        <div class="flex-shrink-0 p-3 bg-white" style="width: 280px;">
+        <div class="flex-shrink-0 p-3 bg-white" style="width: 300px;">
             <a href="#" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
-                <i class="mx-1" data-feather="info"></i>
+                <ion-icon class="mx-1" name="information-circle" size="large"></ion-icon>
                 <span class="fs-6 fw-bold">
                     Notitia Manager System
                 </span>
@@ -31,13 +31,13 @@
                 <li class="mb-1" v-for="(database, i) in databases">
                     <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
                         :data-bs-target="'#btn-collapse-'+i" aria-expanded="true">
-                        <i class="mx-1" data-feather="database"></i> {{database.name}}
+                        <ion-icon class="mx-1" name="file-tray-stacked" size="small"></ion-icon>{{database.name}}
                     </button>
-                    <div class="collapse show" :id="'btn-collapse-'+i">
+                    <div class="collapse" :id="'btn-collapse-'+i">
                         <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                             <li v-for="collection in database.collections">
                                 <a href="#" class="link-dark rounded">
-                                    <i class="mx-1" data-feather="layers"></i> {{collection}}
+                                    <ion-icon class="mx-1" name="file-tray-full" size="small"></ion-icon>{{collection}}
                                 </a>
                             </li>
                         </ul>
@@ -50,6 +50,10 @@
     <main class="d-flex">
     </main>
 
+    <!-- ionicons Icons -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
     <!-- Axios -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
@@ -58,12 +62,6 @@
 
     <!-- Must below VueJS & Axios -->
     <script src="assets/custom/js/sidebar.js"></script>
-
-    <!-- Feather icons -->
-    <script src="assets/feather-icons@4.28.0/js/feather.min.js"></script>
-    <script>
-        feather.replace()
-    </script>
 
     <!-- Bootstrap Bundle with Popper -->
     <script src="assets/bootstrap-5.0.1-dist/js/bootstrap.bundle.min.js"
