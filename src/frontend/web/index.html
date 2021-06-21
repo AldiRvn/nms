@@ -26,6 +26,14 @@
                     Notitia Manager System
                 </span>
             </a>
+            <div class="border-bottom pb-3">
+                <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modal_setting">
+                    <ion-icon class="pt-1" name="settings-outline" size="small"></ion-icon>
+                </button>
+                <button type="button" class="btn btn-success">
+                    <ion-icon class="pt-1" name="refresh" size="small"></ion-icon>
+                </button>
+            </div>
             <ul class="list-unstyled ps-0">
 
                 <li class="mb-1" v-for="(database, i) in databases">
@@ -49,6 +57,47 @@
     </aside>
     <main class="d-flex">
     </main>
+
+    <!-- -------------------------------- MODAL -------------------------------- -->
+    <div id="modal_setting" class="modal fade" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Settings</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <label for="uri" class="form-label">URI</label>
+                    <div class="input-group flex-nowrap mb-3">
+                        <span class="input-group-text"><ion-icon name="home"></ion-icon></span>
+                        <input id="uri" type="text" class="form-control" placeholder="mongodb://localhost:27017" aria-label="URI" aria-describedby="addon-wrapping">
+                    </div>
+
+                    <label for="username" class="form-label">Username</label>
+                    <div class="input-group flex-nowrap mb-3">
+                        <span class="input-group-text"><ion-icon name="person"></ion-icon></span>
+                        <input id="username" type="text" class="form-control" placeholder="root" aria-label="Username" aria-describedby="addon-wrapping">
+                    </div>
+
+                    <label for="password" class="form-label">Password</label>
+                    <div class="input-group flex-nowrap mb-3">
+                        <span class="input-group-text"><ion-icon name="key"></ion-icon></span>
+                        <input id="password" type="text" class="form-control" placeholder="toor" aria-label="Password" aria-describedby="addon-wrapping">
+                    </div>
+
+                    <label for="auth_source" class="form-label">Auth Source</label>
+                    <div class="input-group flex-nowrap mb-3">
+                        <span class="input-group-text"><ion-icon name="lock-closed"></ion-icon></span>
+                        <input id="auth_source" type="text" class="form-control" placeholder="admin" aria-label="Auth Source" aria-describedby="addon-wrapping" value="admin">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Connect</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- ionicons Icons -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
